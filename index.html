@@ -5,57 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+</head>    
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-route.min.js"></script>
-    <script>
-        var app = angular.module("myApp", ["ngRoute"]);
-        app.config(function($routeProvider) {
-          $routeProvider
-            .when("/", {
-              templateUrl: "template1.html",
-              controller: "firstController"
-            })
-            .when("/template2", {
-              templateUrl: "template2.html",
-              controller: "secondController"
-            })
-            .when("/template3", {
-              templateUrl: "template3.html",
-              controller: "thirdController"
-            });
-        });
-      </script>
-    <script>
-        app.controller("firstController", function($scope) {
-          $scope.message = "Hello World!";
-        });
-      
-        app.controller("secondController", function($scope, $http) {
-          $http.get("https://api.github.com/repos/user/repo/contents/file.json").then(function(response) {
-            $scope.jsonData = response.data;
-          });
-        });
-      
-        app.controller("thirdController", function($scope, $http) {
-          $http.get("https://api.github.com/repos/user/repo/contents/file.json").then(function(response) {
-            $scope.jsonData = response.data;
-            $scope.search = function() {
-              var searchText = $scope.searchText;
-              var searchResults = [];
-              for (var i = 0; i < $scope.jsonData.length; i++) {
-                if ($scope.jsonData[i].name.indexOf(searchText) !== -1) {
-                  searchResults.push($scope.jsonData[i]);
-                }
-              }
-              $scope.searchResults = searchResults;
-            };
-          });
-        });
-    </script>
-</head>
-<body>
-    <div ng-app="myApp">
-        <div ng-view></div>
-    </div>
-</body>
-</html>
+    <body ng-app="myApp">
+        <div ng-app="myApp">
+            <div ng-view></div>
+        </div>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+    </html>
