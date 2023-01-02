@@ -33,9 +33,9 @@ var app = angular.module("myApp", ["ngRoute"]);
             $scope.search = function() {
               var searchText = $scope.searchText;
               var searchResults = [];
-              for (var i = 0; i < $scope.jsonData.length; i++) {
-                if ($scope.jsonData[i].name.indexOf(searchText) !== -1) {
-                  searchResults.push($scope.jsonData[i]);
+              for (const element of $scope.jsonData) {
+                if (element.name.indexOf(searchText) !== -1) {
+                  searchResults.push(element);
                 }
               }
               $scope.searchResults = searchResults;
