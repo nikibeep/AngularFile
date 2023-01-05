@@ -31,7 +31,7 @@
         <th ng-click="orderByMe('email')">email</th>
         <th ng-click="orderByMe('post_date')">post_date</th>
     </tr>
-    <tr ng-repeat="x in names | orderBy:myOrderBy |filter:searchText">
+    <tr ng-repeat="x in names | orderBy:myOrderBy | filter:searchText">
         <td>{{x.id|number}}</td>
         <td>{{x.userID|number}}</td>
         <td>{{x.articleID|number}}</td>
