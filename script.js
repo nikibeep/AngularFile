@@ -5,7 +5,11 @@ app.config(function($routeProvider) {
   $routeProvider.when("/", {
     templateUrl: "template1.html",
     controller: "firstController"
-  }).when("/template2", {templateUrl: "template2.html",controller: "secondController"}).when("/template3", {templateUrl: "template3.html",controller: "thirdController"});});
+    }).when("/template2", {templateUrl: "template2.html",
+    controller: "secondController"
+    }).when("/template3", {templateUrl: "template3.html",controller: "thirdController"
+  });
+});
 app.controller("firstController", function($scope) {
   $scope.message = "Hello World!";
 });
