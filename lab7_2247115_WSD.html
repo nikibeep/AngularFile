@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head><title>AngularJS</title></head>
+<style>
+    body{
+        background-color: bisque;
+        color: brown;
+    }
+    h1{
+        color: slateblue;
+    }
+    table{
+        border-color: aliceblue;
+        background-color: black;
+        color: aliceblue;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<h1>Article Details</h1>
+<p>Click the table headers to change the sorting criteria:</p>
+<div ng-app="myApp" ng-controller="namesCtrl">
+    <p>Search:<input id="s" name="s" type="text" ng-article_type="searchText"></p>
+<table border="1" width="100%">
+    <tr>
+        <th ng-click="orderByMe('id')">id</th>
+        <th ng-click="orderByMe('userID')">userID</th>
+        <th ng-click="orderByMe('articleID')">serviceID</th>
+        <th ng-click="orderByMe('article_type')">article_type</th>
+        <th ng-click="orderByMe('password')">password</th>
+        <th ng-click="orderByMe('email')">email</th>
+        <th ng-click="orderByMe('post_date')">post_date</th>
+    </tr>
+    <tr ng-repeat="x in names | orderBy:myOrderBy |filter:searchText">
+        <td>{{x.id|number}}</td>
+        <td>{{x.userID|number}}</td>
+        <td>{{x.articleID|number}}</td>
+        <td>{{x.article_type|uppercase}}</td>
+        <td>{{x.password|string}}</td>
+        <td>{{x.email|email}}</td>
+        <td>{{x.post_date|date:"dd/MM/yyyy"}}</td>
+    </tr>
+</table>
+</div>
+</body>
+<script>
+    angular.module('myApp', []).controller('namesCtrl', function($scope) {
+        $scope.names = [
+            {"id":"001","userID":"001","articleID":"001","article_type":"tech","password":"5000","email":"niki@gmail.com","post_date":"02-02-2020"},
+            {"id":"002","userID":"002","articleID":"002","article_type":"health","password":"5500","email":"toka@gmail.com","post_date":"22-04-2021"},
+            {"id":"003","userID":"003","articleID":"003","article_type":"food","password":"6300","email":"ferance@gmail.com","post_date":"27-05-2020"},
+            {"id":"004","userID":"004","articleID":"004","article_type":"art","password":"4900","email":"bella@gmail.com","post_date":"05-03-2020"},
+            {"id":"005","userID":"005","articleID":"005","article_type":"news","password":"3999","email":"firane@gmail.com","post_date":"03-04-2020"},
+            {"id":"006","userID":"006","articleID":"006","article_type":"food","password":"5769","email":"ploge@gmail.com","post_date":"17-02-2020"}];
+        $scope.orderByMe = function(x) {
+            $scope.myOrderBy = x;
+        }
+    });
+</script>
+</html>
