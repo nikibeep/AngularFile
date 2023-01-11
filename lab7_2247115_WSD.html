@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head><title>AngularJS</title></head>
@@ -57,4 +58,65 @@
         }
     });
 </script>
+=======
+<!DOCTYPE html>
+<html>
+<head><title>AngularJS</title></head>
+<style>
+    body{
+        background-color: bisque;
+        color: brown;
+    }
+    h1{
+        color: slateblue;
+    }
+    table{
+        border-color: aliceblue;
+        background-color: black;
+        color: aliceblue;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<h1>moto logs</h1>
+<p>Click the table headers to change the sorting criteria:</p>
+<div ng-app="myApp" ng-controller="namesCtrl">
+    <p>Search:<input id="s" name="s" type="text" ng-model="searchText"></p>
+<table border="1" width="100%">
+    <tr>
+        <th ng-click="orderByMe('id')">id</th>
+        <th ng-click="orderByMe('userID')">userID</th>
+        <th ng-click="orderByMe('articleID')">articleID</th>
+        <th ng-click="orderByMe('model')">Model</th>
+        <th ng-click="orderByMe('cost')">Cost</th>
+        <th ng-click="orderByMe('lastService')">LastService</th>
+        <th ng-click="orderByMe('nextService')">NextService</th>
+    </tr>
+    <tr ng-repeat="x in names | orderBy:myOrderBy |filter:searchText">
+        <td>{{x.id|number}}</td>
+        <td>{{x.userID|number}}</td>
+        <td>{{x.articleID|number}}</td>
+        <td>{{x.model|uppercase}}</td>
+        <td>{{x.cost|currency : "₹" :2}}</td>
+        <td>{{x.lastService|date:"dd/MM/yyyy"}}</td>
+        <td>{{x.nextService|date:"dd/MM/yyyy"}}</td>
+    </tr>
+</table>
+</div>
+</body>
+<script>
+    angular.module('myApp', []).controller('namesCtrl', function($scope) {
+        $scope.names = [
+            {"id":"001","userID":"001","articleID":"001","model":"city","cost":"5000","lastService":"02-02-2018","nextService":"02-02-2020"},
+            {"id":"002","userID":"002","articleID":"002","model":"country","cost":"5500","lastService":"12-04-2019","nextService":"22-04-2021"},
+            {"id":"003","userID":"003","articleID":"003","model":"town","cost":"6300","lastService":"12-05-2018","nextService":"27-05-2020"},
+            {"id":"004","userID":"004","articleID":"004","model":"jazz","cost":"4900","lastService":"23-03-2019","nextService":"05-03-2020"},
+            {"id":"005","userID":"005","articleID":"005","model":"i20","cost":"3999","lastService":"16-04-2018","nextService":"03-04-2020"},
+            {"id":"006","userID":"006","articleID":"006","model":"a6","cost":"5769","lastService":"09-02-2019","nextService":"17-02-2020"}];
+        $scope.orderByMe = function(x) {
+            $scope.myOrderBy = x;
+        }
+    });
+</script>
+>>>>>>> 462978b9f94f997e78c24853078d09637129de69
 </html>
